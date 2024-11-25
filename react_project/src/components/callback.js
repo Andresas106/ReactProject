@@ -21,19 +21,19 @@ const Callback = () => {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
           Authorization:
-            "Basic " + btoa("094739ed119940bb8c913a9d086c4b34:acb0f522e4484a46ab812da61d5e05d8"), // Reemplaza con tus credenciales
+            "Basic " + btoa("094739ed119940bb8c913a9d086c4b34:acb0f522e4484a46ab812da61d5e05d8"),
         },
         body: new URLSearchParams({
           grant_type: "authorization_code",
           code: code,
-          redirect_uri: "http://localhost:3000/callback", // Debe coincidir
+          redirect_uri: "http://localhost:3000/callback",
         }),
       });
 
       const data = await response.json();
       if (data.access_token) {
         localStorage.setItem("spotifyAccessToken", data.access_token);
-        navigate("/artists"); // Redirige a la página de artistas
+        navigate("/artists");
       }
     } catch (error) {
       console.error("Error al obtener el token de acceso:", error);

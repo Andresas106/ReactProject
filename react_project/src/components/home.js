@@ -14,7 +14,8 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&
 
 const Home = () => {
   const redirectToSpotify = () => {
-    window.location.href = AUTH_URL; // Redirige al usuario a Spotify
+    window.location.href = AUTH_URL;
+    
   };
 
   return (
