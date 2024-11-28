@@ -1,0 +1,15 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+  }
+  
+  .home-button {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+  

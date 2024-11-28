@@ -1,13 +1,54 @@
+/* Reset básico */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #1E1E1E; /* Fondo oscuro */
+  color: #FFFFFF; /* Texto blanco */
+  font-family: 'Arial', sans-serif; /* Fuente sencilla y legible */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Links */
+a {
+  color: #61DAFB;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #FFFFFF;
+}
+
+/* Botones globales */
+button {
+  background-color: #1DB954;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #14833B;
+}
+
+button:disabled {
+  background-color: #666666;
+  cursor: not-allowed;
+}
+
+/* Encabezados */
+h1, h2, h3 {
+  color: #FFFFFF;
+}
+
+/* Imágenes */
+img {
+  border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }

@@ -1,4 +1,6 @@
 import React from "react";
+import './home.css';
+
 
 const CLIENT_ID = "094739ed119940bb8c913a9d086c4b34";
 const REDIRECT_URI = "http://localhost:3000/callback";
@@ -19,10 +21,12 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="home-container">
       <h1>Bienvenido</h1>
-      <button onClick={redirectToSpotify}>Iniciar sesión con Spotify</button>
-    </div>
+    <button className="home-button" onClick={redirectToSpotify}>
+    Iniciar sesión con Spotify
+    </button>
+</div>
   );
 };
 
