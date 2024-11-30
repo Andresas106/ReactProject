@@ -29,8 +29,6 @@ const ArtistSearch = () => {
       const data = await response.json();
       const artists = data.artists.items;
 
-      console.log(data.artists);
-
       setArtists(artists); 
     } catch (error) {
       console.error("Error fetching artists:", error);
@@ -44,25 +42,46 @@ const ArtistSearch = () => {
       return;
     }
 
+    let allArtists = [];
+    let offset = 0;
+    let limit = 20;
+
     try {
-      const url = `https://api.spotify.com/v1/search?q=genre:edm&type=artist&limit=${itemsPerPage}`;
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      while(true)
+      {
+        const url = `https://api.spotify.com/v1/search?q=genre:edm&type=artist&limit=${limit}&offset=${offset}`;
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-      if (!response.ok) {
-        throw new Error(`Error fetching artists: ${response.statusText}`);
+        if (!response.ok) {
+          throw new Error(`Error fetching artists: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        const fetchedArtists = data.artists.items;
+
+        if (fetchedArtists.length === 0) break; // Si no hay más resultados, terminamos
+
+        allArtists = [...allArtists, ...fetchedArtists];
+        offset += limit;
+
+        if(offset >= data.artists.total) break;
       }
+      
 
-      const data = await response.json();
-      const artists = data.artists.items;
+     
 
-      setTopArtists(artists); 
+      const sortedArtists = allArtists.sort((a, b) => b.popularity - a.popularity);
+
+      const first20Artists = sortedArtists.slice(0, 20);
+      setTopArtists(first20Artists); 
     } catch (error) {
-      console.error("Error fetching artists:", error);
+      //console.error("Error fetching artists:", error);
+      
     }
   }
 
@@ -82,12 +101,14 @@ const ArtistSearch = () => {
 
   useEffect(() => {
     fetchArtists(currentPage * itemsPerPage);
+    fetchTopTwenty();
   }, [currentPage]);
 
   return (
     <div>
-      <h1>Search Artists</h1>
-      <div>  
+      
+      <div> 
+      <h1>Edm Artists</h1> 
             <ul>
               {artists.map((artist) => (
                 <li key={artist.id}>
@@ -109,6 +130,18 @@ const ArtistSearch = () => {
                 Next
               </button>
             </div>
+      </div>
+      <div>
+        <h1>Top 20 EDM Artists</h1>
+        <ul>
+              {topArtists.map((artist) => (
+                <li key={artist.id}>
+                  <h3>{artist.name}</h3>
+                  <p>{artist.followers.total} followers</p>
+                  <img src={artist.images[0]?.url} alt={artist.name} width="100" />
+                </li>
+              ))}
+            </ul>
       </div>
     </div>
   );

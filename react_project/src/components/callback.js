@@ -31,7 +31,6 @@ const Callback = () => {
       });
 
       const data = await response.json();
-      console.log(data);
       if (data.access_token) {
         localStorage.setItem("spotifyAccessToken", data.access_token);
         navigate("/artists");
