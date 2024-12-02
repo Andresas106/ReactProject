@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import ArtistCard from "./artistCard";
+import { useNavigate } from "react-router-dom";
 
 const ArtistSearch = () => {
   const [artists, setArtists] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
   const [currentPage, setCurrentPage] = useState(0); 
+  const [searchtext, setSearchText] = useState("");
   const itemsPerPage = 20; 
+  const navigate = useNavigate();
 
   const fetchArtists = async (offset = 0) => {
     const token = localStorage.getItem("spotifyAccessToken");
@@ -80,8 +84,7 @@ const ArtistSearch = () => {
       const first20Artists = sortedArtists.slice(0, 20);
       setTopArtists(first20Artists); 
     } catch (error) {
-      //console.error("Error fetching artists:", error);
-      
+      console.error("Error fetching artists:", error);
     }
   }
 
@@ -99,6 +102,16 @@ const ArtistSearch = () => {
     }
   };
 
+  const redirectToSearch = (e) => {
+    const query = e.target.value;
+    setSearchText(query);
+
+    if(query.trim())
+      {
+        navigate('/search', {state: {query} })
+      }
+  };
+
   useEffect(() => {
     fetchArtists(currentPage * itemsPerPage);
     fetchTopTwenty();
@@ -106,16 +119,12 @@ const ArtistSearch = () => {
 
   return (
     <div>
-      
+      <input type="text" value={searchtext} onChange={redirectToSearch} placeholder="Search EDM Artists"></input>
       <div> 
       <h1>Edm Artists</h1> 
             <ul>
               {artists.map((artist) => (
-                <li key={artist.id}>
-                  <h3>{artist.name}</h3>
-                  <p>{artist.followers.total} followers</p>
-                  <img src={artist.images[0]?.url} alt={artist.name} width="100" />
-                </li>
+                <ArtistCard key={artist.id} id={artist.id} name={artist.name} followers={artist.followers.total} firstImage={artist.images[0]?.url}></ArtistCard>
               ))}
             </ul>
             <div style={{ marginTop: "20px" }}>
@@ -135,11 +144,7 @@ const ArtistSearch = () => {
         <h1>Top 20 EDM Artists</h1>
         <ul>
               {topArtists.map((artist) => (
-                <li key={artist.id}>
-                  <h3>{artist.name}</h3>
-                  <p>{artist.followers.total} followers</p>
-                  <img src={artist.images[0]?.url} alt={artist.name} width="100" />
-                </li>
+                <ArtistCard key={artist.id} id={artist.id} name={artist.name} followers={artist.followers.total} firstImage={artist.images[0]?.url}></ArtistCard>
               ))}
             </ul>
       </div>
