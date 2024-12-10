@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ArtistCard from "./artistCard";
+import Nav from "../view/nav";
 
 
 const SearchInput =  () => {
@@ -9,8 +10,8 @@ const SearchInput =  () => {
     const initialQuery = location.state?.query || "";
     const [searchText, setSearchText] = useState(initialQuery);
     const [artists, setArtists] = useState([]);
+    const [message, setMessage] = useState("");
     const itemsPerPage = 20;
-    const inputRef = useRef(null);
 
     const fetchArtists = async (query) => {
         const token = localStorage.getItem("spotifyAccessToken");
@@ -42,11 +43,13 @@ const SearchInput =  () => {
       useEffect(() => {
         if (searchText.trim()) {
           fetchArtists(searchText);
+          setMessage("");
         }
-
-        if (inputRef.current) {
-            inputRef.current.focus();
-          }
+        else
+        {
+          setArtists([]);
+          setMessage("No artists searched.");
+        }
       }, [searchText, navigate]);
     
       const handleInputChange = (e) => {
@@ -56,14 +59,15 @@ const SearchInput =  () => {
     
       return (
         <div>
-          <h1>Search Results for "{searchText}"</h1>
+          <Nav></Nav>
+          <h1>Search Results for EDM Artists</h1>
           <input
-          ref={inputRef}
             type="text"
             value={searchText}
             onChange={handleInputChange}
             placeholder="Search for EDM artists"
           />
+          <p style={{ color: "red" }}>{message}</p>
           <ul>
             {artists.map((artist) => (
               <ArtistCard
