@@ -1,5 +1,5 @@
 import React from "react";
-import "./home.css";
+import "./ArtistCard.css";
 
 const ArtistCard = ({id, name, followers, firstImage}) => {
     return(

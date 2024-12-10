@@ -12,7 +12,10 @@ const Callback = () => {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
           Authorization:
-            "Basic " + btoa("094739ed119940bb8c913a9d086c4b34:acb0f522e4484a46ab812da61d5e05d8"),
+            "Basic " +
+            btoa(
+              "094739ed119940bb8c913a9d086c4b34:acb0f522e4484a46ab812da61d5e05d8"
+            ),
         },
         body: new URLSearchParams({
           grant_type: "authorization_code",
