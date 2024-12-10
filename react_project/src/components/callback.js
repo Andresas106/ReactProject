@@ -5,15 +5,6 @@ const Callback = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const query = new URLSearchParams(location.search);
-    const code = query.get("code");
-
-    if (code) {
-      getAccessToken(code);
-    }
-  }, [location]);
-
   const getAccessToken = async (code) => {
     try {
       const response = await fetch("https://accounts.spotify.com/api/token", {
@@ -39,6 +30,17 @@ const Callback = () => {
       console.error("Error al obtener el token de acceso:", error);
     }
   };
+
+  useEffect(() => {
+    const query = new URLSearchParams(location.search);
+    const code = query.get("code");
+
+    if (code) {
+      getAccessToken(code);
+    }
+  }, [location]);
+
+
 
   return <div>Procesando autenticación...</div>;
 };

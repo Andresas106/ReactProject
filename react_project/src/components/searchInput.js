@@ -47,11 +47,6 @@ const SearchInput =  () => {
         if (inputRef.current) {
             inputRef.current.focus();
           }
-
-        if(!searchText.trim())
-            {
-                navigate('/artists');
-            }
       }, [searchText, navigate]);
     
       const handleInputChange = (e) => {

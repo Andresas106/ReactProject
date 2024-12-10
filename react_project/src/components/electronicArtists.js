@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import ArtistCard from "./artistCard";
-import { useNavigate } from "react-router-dom";
+import Nav from "../view/nav";
 
-const ArtistSearch = () => {
+const AllArtists = () => {
   const [artists, setArtists] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
   const [currentPage, setCurrentPage] = useState(0); 
-  const [searchtext, setSearchText] = useState("");
   const itemsPerPage = 20; 
-  const navigate = useNavigate();
 
   const fetchArtists = async (offset = 0) => {
     const token = localStorage.getItem("spotifyAccessToken");
@@ -102,16 +100,6 @@ const ArtistSearch = () => {
     }
   };
 
-  const redirectToSearch = (e) => {
-    const query = e.target.value;
-    setSearchText(query);
-
-    if(query.trim())
-      {
-        navigate('/search', {state: {query} })
-      }
-  };
-
   useEffect(() => {
     fetchArtists(currentPage * itemsPerPage);
     fetchTopTwenty();
@@ -119,7 +107,7 @@ const ArtistSearch = () => {
 
   return (
     <div>
-      <input type="text" value={searchtext} onChange={redirectToSearch} placeholder="Search EDM Artists"></input>
+      <Nav></Nav>
       <div> 
       <h1>Edm Artists</h1> 
             <ul>
@@ -152,4 +140,4 @@ const ArtistSearch = () => {
   );
 };
 
-export default ArtistSearch;
+export default AllArtists;
