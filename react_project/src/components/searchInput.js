@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import ArtistCard from "./artistCard";
 import Nav from "../view/nav";
+import { Box, TextField } from "@mui/material";
 
 const SearchInput = () => {
   const location = useLocation();
@@ -11,6 +12,9 @@ const SearchInput = () => {
   const [message, setMessage] = useState("No artists searched");
   const [isSearching, setIsSearching] = useState(false); // To track if the search is happening
   const itemsPerPage = 20;
+
+
+  let query;
   
   const debounceTimeout = useRef(null); // Reference to store the timeout ID
   
@@ -55,7 +59,7 @@ const SearchInput = () => {
 
   // Handle changes to the search input with debounce
   const handleInputChange = (e) => {
-    const query = e.target.value;
+    query = e.target.value;
     setSearchText(query);
 
     // Clear the previous timeout
@@ -73,12 +77,15 @@ const SearchInput = () => {
     <div>
       <Nav></Nav>
       <h1>Search Results for EDM Artists</h1>
-      <input
-        type="text"
-        value={searchText}
-        onChange={handleInputChange}
-        placeholder="Search for EDM artists"
-      />
+      <Box sx={{width : 300, margin: 20}}>
+      <TextField 
+      value={searchText} 
+      onChange={handleInputChange} 
+      id="standard-basic"
+      label="Search for EDM Artists" 
+      variant="outlined"
+      ></TextField>
+      </Box> 
       {message && <p style={{ color: "red" }}>{message}</p>}
       {isSearching && <p>Searching...</p>} {/* Show "Searching..." while the request is in progress */}
       <ul>
