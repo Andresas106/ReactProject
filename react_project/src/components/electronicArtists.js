@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ArtistCard from "./artistCard";
 import Nav from "../view/nav";
+import "./electronicArtists.css";
 
 const AllArtists = () => {
   const [artists, setArtists] = useState([]);
@@ -107,37 +108,48 @@ const AllArtists = () => {
 
   return (
     <div>
-      <Nav></Nav>
-      <div> 
-      <h1>Edm Artists</h1> 
-            <ul>
-              {artists.map((artist) => (
-                <ArtistCard key={artist.id} id={artist.id} name={artist.name} followers={artist.followers.total} firstImage={artist.images[0]?.url}></ArtistCard>
-              ))}
-            </ul>
-            <div style={{ marginTop: "20px" }}>
-              <button
-                onClick={handlePreviousPage}
-                disabled={currentPage === 0}
-                style={{ marginRight: "10px" }}
-              >
-                Previous
-              </button>
-              <button onClick={handleNextPage}>
-                Next
-              </button>
-            </div>
-      </div>
-      <div>
-        <h1>Top 20 EDM Artists</h1>
-        <ul>
-              {topArtists.map((artist) => (
-                <ArtistCard key={artist.id} id={artist.id} name={artist.name} followers={artist.followers.total} firstImage={artist.images[0]?.url}></ArtistCard>
-              ))}
-            </ul>
+      <Nav />
+      <div className="electronic-artists-container">
+        <div>
+          <h1>Edm Artists</h1>
+          <ul className="artist-list">
+            {artists.map((artist) => (
+              <ArtistCard 
+                key={artist.id} 
+                id={artist.id} 
+                name={artist.name} 
+                followers={artist.followers.total} 
+                firstImage={artist.images[0]?.url}
+              />
+            ))}
+          </ul>
+          <div style={{ marginTop: "20px" }} className="navigation-buttons">
+            <button onClick={handlePreviousPage} disabled={currentPage === 0} style={{ marginRight: "10px" }}>
+              Previous
+            </button>
+            <button onClick={handleNextPage}>
+              Next
+            </button>
+          </div>
+        </div>
+        <div className="top-artists-container">
+          <h1>Top 20 EDM Artists</h1>
+          <ul>
+            {topArtists.map((artist) => (
+              <ArtistCard 
+                key={artist.id} 
+                id={artist.id} 
+                name={artist.name} 
+                followers={artist.followers.total} 
+                firstImage={artist.images[0]?.url}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
+  
 };
 
 export default AllArtists;

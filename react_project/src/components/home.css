@@ -1,3 +1,5 @@
+/*Es el CSS de la Ventana Home*/
+
 .home-container {
   display: flex;
   flex-direction: column;

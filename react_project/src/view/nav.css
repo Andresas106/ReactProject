@@ -1,0 +1,36 @@
+/* Estilo general para el menú de navegación */
+nav {
+    display: flex;
+    justify-content: center; /* Centra los enlaces horizontalmente */
+    background-color: #121212; /* Fondo oscuro */
+    padding: 15px 0; /* Espaciado en la parte superior e inferior */
+  }
+  
+  /* Estilo para cada enlace en el menú */
+  nav a {
+    color: #b3b3b3; /* Color gris claro para los enlaces */
+    font-size: 1.1rem; /* Tamaño de fuente */
+    text-decoration: none; /* Quitar subrayado */
+    margin: 0 20px; /* Espaciado entre los enlaces */
+    transition: color 0.3s ease, transform 0.2s ease; /* Efecto de transición */
+    cursor: pointer; /* Cambia el cursor a mano al pasar por encima */
+  }
+  
+  /* Efecto cuando el usuario pasa el ratón sobre el enlace */
+  nav a:hover {
+    color: #1db954; /* Verde característico de Spotify */
+    transform: translateY(-3px); /* Efecto de elevación */
+  }
+  
+  /* Efecto de enfoque para accesibilidad */
+  nav a:focus {
+    outline: none; /* Elimina el contorno predeterminado */
+    color: #1db954; /* Cambia el color al verde cuando tiene foco */
+  }
+  
+  /* Añadir un pequeño sombreado a los enlaces activos */
+  nav a.active {
+    color: #1db954; /* Verde cuando el enlace está activo */
+    font-weight: bold; /* Hacer el texto más grueso */
+  }
+  

@@ -1,45 +1,129 @@
+/* Diseño general */
 .electronic-artists-container {
-    padding: 20px;
-    background-color: #f4f4f4;
-  }
-  
-  .artist-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .navigation-buttons {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-  }
-  
-  .navigation-buttons button {
-    background-color: #1db954;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    padding: 10px 15px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin: 0 10px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .navigation-buttons button:hover {
-    background-color: #14833b;
-  }
-  
-  .navigation-buttons button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  h1 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
+  display: flex;
+  justify-content: space-between; /* Coloca las dos secciones a los lados */
+  padding: 20px;
+  background-color: #1e1e1e; /* Fondo oscuro, más adecuado para la temática EDM */
+}
+
+.artist-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Cuatro columnas en lugar de tres */
+  gap: 20px; /* Espaciado entre las cartas */
+  padding: 20px;
+  list-style: none;
+  width: 70%;
+}
+
+
+/* Estilo para el contenedor de los 20 mejores artistas */
+.top-artists-container {
+  width: 35%; /* Contenedor más pequeño para el top 20 */
+  padding: 20px;
+  background-color: #333; /* Fondo oscuro para el top 20 */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+}
+
+/* Asegurar que la lista no tenga puntos */
+.top-artists-container ul {
+  list-style: none; /* Eliminar puntos de la lista */
+  padding: 0; /* Eliminar cualquier relleno predeterminado */
+  margin: 0; /* Eliminar márgenes */
+}
+
+/* Estilo de los elementos de la lista */
+.top-artists-container li {
+  font-size: 0.9rem; /* Reducir el tamaño de la fuente */
+  color: #fff; /* Color blanco para el texto */
+  padding: 8px 0; /* Espaciado vertical */
+  border-bottom: 1px solid #444; /* Un borde sutil para separar los artistas */
+}
+
+.top-artists-container li:last-child {
+  border-bottom: none; /* Eliminar borde en el último ítem */
+}
+
+
+/* Estilo de las cartas de los artistas */
+.artist-card {
+  border: 1px solid #444; /* Cambio de borde a un tono oscuro */
+  border-radius: 10px;
+  padding: 15px;
+  background-color: #2c2c2c; /* Fondo oscuro para las cartas */
+  color: #fff; /* Texto blanco para mejor visibilidad */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.artist-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3); /* Brillo verde cuando se pasa el mouse, estilo EDM */
+}
+
+.artist-card-title {
+  font-size: 1.1rem;
+  color: #fff; /* Texto blanco */
+  margin-bottom: 8px;
+}
+
+.artist-card-followers {
+  font-size: 0.9rem;
+  color: #aaa; /* Color gris claro para los seguidores */
+  margin-bottom: 12px;
+}
+
+.artist-card-image {
+  border-radius: 50%;
+  max-width: 90px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Estilo para los botones de navegación */
+.navigation-buttons {
+  display: flex;
+  justify-content: center; /* Centra los botones horizontalmente */
+  align-items: center; /* Centra los botones verticalmente */
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible */
+  margin-top: 20px;
+  padding: 10px 0; /* Añadimos algo de relleno arriba y abajo */
+}
+
+/* Estilo individual para cada botón */
+.navigation-buttons button {
+  background-color: #1db954; /* Verde brillante de Spotify */
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 25px; /* Aumenté el tamaño de los botones para hacerlos más cómodos */
+  font-size: 1.1rem; /* Tamaño de la fuente */
+  cursor: pointer;
+  margin: 0 15px; /* Espacio entre los botones */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar efecto destacado */
+}
+
+/* Efecto cuando el usuario pasa el cursor sobre el botón */
+.navigation-buttons button:hover {
+  background-color: #14833b; /* Oscurece el color al pasar el mouse */
+  transform: translateY(-3px); /* Efecto de elevación */
+}
+
+/* Estilo cuando el botón está deshabilitado */
+.navigation-buttons button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none; /* Elimina la sombra cuando está deshabilitado */
+}
+
+
+
+/* Estilo para los títulos */
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff; /* Títulos en blanco */
+}

@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import ArtistCard from "./artistCard";
 import Nav from "../view/nav";
 import { Box, TextField } from "@mui/material";
+import "./searcInput.css";
 
 const SearchInput = () => {
   const location = useLocation();
@@ -13,11 +14,10 @@ const SearchInput = () => {
   const [isSearching, setIsSearching] = useState(false); // To track if the search is happening
   const itemsPerPage = 20;
 
-
   let query;
-  
+
   const debounceTimeout = useRef(null); // Reference to store the timeout ID
-  
+
   const fetchArtists = async (query) => {
     if (!query.trim()) {
       setArtists([]); // Clear previous results when search is empty
@@ -75,18 +75,34 @@ const SearchInput = () => {
 
   return (
     <div>
-      <Nav></Nav>
+      <Nav />
       <h1>Search Results for EDM Artists</h1>
-      <Box sx={{width : 300, margin: 20}}>
-      <TextField 
-      value={searchText} 
-      onChange={handleInputChange} 
-      id="standard-basic"
-      label="Search for EDM Artists" 
-      variant="outlined"
-      ></TextField>
-      </Box> 
-      {message && <p style={{ color: "red" }}>{message}</p>}
+      <Box sx={{ width: 300, margin: 20, display: 'flex', justifyContent: 'center' }}>
+        <TextField
+          value={searchText}
+          onChange={handleInputChange}
+          id="standard-basic"
+          label="Search for EDM Artists"
+          variant="outlined"
+          fullWidth
+          sx={{
+            borderRadius: '25px',
+            backgroundColor: 'white',
+            '& .MuiOutlinedInput-root': {
+              borderRadius: '25px',
+              paddingRight: '40px', // Adjust the padding to fit the icon
+            },
+            '& .MuiInputLabel-root': {
+              color: '#555',
+            },
+            '& .MuiInputBase-input': {
+              fontSize: '1rem',
+              padding: '10px 14px',
+            },
+          }}
+        />
+      </Box>
+      {message && <p className="message">{message}</p>}
       {isSearching && <p>Searching...</p>} {/* Show "Searching..." while the request is in progress */}
       <ul>
         {artists.map((artist) => (

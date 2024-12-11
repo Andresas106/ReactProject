@@ -1,30 +1,55 @@
 .search-container {
-    padding: 20px;
-    background-color: #fff;
-  }
-  
-  .search-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .search-header input {
-    width: 50%;
-    padding: 10px;
-    border: 2px solid #1db954;
-    border-radius: 25px;
-    font-size: 1rem;
-  }
-  
-  .search-header input:focus {
-    outline: none;
-    border-color: #14833b;
-  }
-  
-  .artist-results {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* Centra el contenido horizontalmente */
+  justify-content: center;  /* Centra el contenido verticalmente */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+}
+
+.search-header {
+  display: flex;
+  justify-content: center; /* Centra el contenedor de la barra */
+  width: 100%;
+  max-width: 500px; /* Controla el tamaño máximo de la barra de búsqueda */
+  margin-bottom: 20px;
+  flex-grow: 1; /* Permite que el contenedor crezca si es necesario */
+}
+
+.search-header input {
+  width: 100%; /* Hace que el input ocupe todo el ancho disponible en su contenedor */
+  padding: 12px;
+  border: 2px solid #ddd; /* Borde gris claro */
+  border-radius: 25px; /* Bordes redondeados */
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+}
+
+.search-header input:focus {
+  outline: none;
+  border-color: #1db954; /* Verde cuando se hace foco */
+}
+
+.search-header input::placeholder {
+  color: #bbb; /* Color gris para el texto del placeholder */
+}
+
+ul {
+  list-style-type: none; /* Elimina los puntos */
+  padding: 0;
+  margin: 0;
+}
+
+.message {
+  text-align: center;
+  color: red; /* Gris suave */
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.message.no-results {
+  color: red;
+  font-size: 1.5rem;
+}
