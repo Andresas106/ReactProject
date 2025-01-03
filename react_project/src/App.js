@@ -4,6 +4,7 @@ import Home from "./components/home";
 import Callback from "./components/callback";
 import ElectronicArtists from "./components/electronicArtists";
 import SearchInput from "./components/searchInput";
+import Detail from "./components/detail";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/callback" element={<Callback />} />
         <Route path="/artists" element={<ElectronicArtists />} />
         <Route path="/search" element= {<SearchInput />} />
+        <Route path="/detail/:id" element = {<Detail />} />
       </Routes>
     </Router>
   );
