@@ -2,11 +2,13 @@ import { useParams } from "react-router-dom";
 import Nav from "../../components/shared/nav/nav";
 import { useEffect, useState } from "react";
 import AlbumCard from "../../components/list_components/albumCard";
+import TrackCard from "../../components/list_components/trackCard";
 
 const Detail = () => {
   const id = useParams();
   const [albums, SetAlbums] = useState([]);
   const [artist, SetArtist] = useState(null);
+  const [tracks, SetTracks] = useState([]);
     // Función para obtener detalles del artista
     const fetchArtistDetails = async () => {
       const token = localStorage.getItem("spotifyAccessToken");
@@ -29,7 +31,6 @@ const Detail = () => {
         }
   
         const data = await response.json();
-        console.log(data);
         SetArtist(data);
       } catch (error) {
         console.error("Error fetching artist details:", error);
@@ -58,7 +59,6 @@ const Detail = () => {
 
       const data = await response.json();
       const albums = data.items;
-      console.log(albums);
       SetAlbums(albums); 
 
 
@@ -67,9 +67,39 @@ const Detail = () => {
     }
   };
 
+  const fetchTopArtists = async () => {
+    const token = localStorage.getItem("spotifyAccessToken");
+    if (!token) {
+      console.error("No token found. Please authenticate first.");
+      return;
+    }
+
+    try {
+      const url = 'https://api.spotify.com/v1/artists/' + id.id + '/top-tracks';
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error fetching artists: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      const tracks = data.tracks;
+      console.log(tracks);
+      SetTracks(tracks); 
+    } catch (error) {
+      console.error("Error fetching artists:", error);
+    }
+  };
+
   useEffect(() => {
       fetchArtistDetails();
       fetchAlbums();
+      fetchTopArtists();
   }, [id.id]);
 
   return (
@@ -88,6 +118,11 @@ const Detail = () => {
         </div>
         <div>
           <h2>Artist Top Tracks</h2> 
+          <ul>
+            {tracks.map((track) => (
+              <TrackCard key={track.id} id={track.id} />
+            ))}
+          </ul>
         </div>
         
       </div>
