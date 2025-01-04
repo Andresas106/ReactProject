@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import ArtistCard from "./artistCard";
-import Nav from "../view/nav";
+import ArtistCard from "../../components/list_components/artistCard";
+import Nav from "../../components/shared/nav/nav";
 import { Box, TextField } from "@mui/material";
 import "./searcInput.css";
 

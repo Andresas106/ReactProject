@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./components/home";
-import Callback from "./components/callback";
-import ElectronicArtists from "./components/electronicArtists";
-import SearchInput from "./components/searchInput";
-import Detail from "./components/detail";
+import Home from "./pages/home/home";
+import Callback from "./pages/callback/callback";
+import ElectronicArtists from "./pages/artists/electronicArtists";
+import SearchInput from "./pages/search/searchInput";
+import Detail from "./pages/detail/detail";
 
 function App() {
   return (

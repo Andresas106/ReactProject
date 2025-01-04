@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
-import Nav from "../view/nav";
+import Nav from "../../components/shared/nav/nav";
 import { useEffect, useState } from "react";
+import AlbumCard from "../../components/list_components/albumCard";
 
 const Detail = () => {
   const id = useParams();
@@ -57,7 +58,9 @@ const Detail = () => {
 
       const data = await response.json();
       const albums = data.items;
+      console.log(albums);
       SetAlbums(albums); 
+
 
     } catch (error) {
       console.error("Error fetching artists:", error);
@@ -72,14 +75,23 @@ const Detail = () => {
   return (
     <div>
       <Nav />
-      {artist && <h1>{artist.name}</h1>} 
-      <ul>
-        {albums.map((album) => (
-          <li key={album.id}>
-            {album.name} - {album.release_date}
-          </li>
-        ))}
-      </ul>
+      {artist && <img src={artist.images[1].url} />}
+      {artist && <h1>{artist.name}</h1>}
+      <div>
+        <div>
+          <h2>Artist Album</h2> 
+          <ul>
+            {albums.map((album) => (
+              <AlbumCard key={album.id} name={album.name} image={album.images[2].url} releaseDate={album.release_date}/>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h2>Artist Top Tracks</h2> 
+        </div>
+        
+      </div>
+      
     </div>
   );
 };

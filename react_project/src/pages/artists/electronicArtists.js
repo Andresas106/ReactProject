@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from "react";
-import ArtistCard from "./artistCard";
-import Nav from "../view/nav";
+import ArtistCard from "../../components/list_components/artistCard";
+import Nav from "../../components/shared/nav/nav";
 import "./electronicArtists.css";
 
 const AllArtists = () => {
   const [artists, setArtists] = useState([]);
   const [topArtists, setTopArtists] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0); 
-  const itemsPerPage = 20; 
+  const [currentPage, setCurrentPage] = useState(0);
+  const [loadingArtists, setLoadingArtists] = useState(false);
+  const [loadingTopArtists, setLoadingTopArtists] = useState(false);
+  const itemsPerPage = 20;
 
   const fetchArtists = async (offset = 0) => {
+    setLoadingArtists(true);
     const token = localStorage.getItem("spotifyAccessToken");
     if (!token) {
       console.error("No token found. Please authenticate first.");
@@ -32,13 +35,16 @@ const AllArtists = () => {
       const data = await response.json();
       const artists = data.artists.items;
 
-      setArtists(artists); 
+      setArtists(artists);
     } catch (error) {
       console.error("Error fetching artists:", error);
+    } finally {
+      setLoadingArtists(false);
     }
   };
 
-  const fetchTopTwenty = async() => {
+  const fetchTopTwenty = async () => {
+    setLoadingTopArtists(true);
     const token = localStorage.getItem("spotifyAccessToken");
     if (!token) {
       console.error("No token found. Please authenticate first.");
@@ -50,8 +56,7 @@ const AllArtists = () => {
     let limit = 20;
 
     try {
-      while(true)
-      {
+      while (true) {
         const url = `https://api.spotify.com/v1/search?q=genre:edm&type=artist&limit=${limit}&offset=${offset}`;
         const response = await fetch(url, {
           method: "GET",
@@ -72,25 +77,27 @@ const AllArtists = () => {
         allArtists = [...allArtists, ...fetchedArtists];
         offset += limit;
 
-        if(offset >= data.artists.total) break;
+        if (offset >= data.artists.total) break;
       }
-      
 
-     
+
+
 
       const sortedArtists = allArtists.sort((a, b) => b.popularity - a.popularity);
 
       const first20Artists = sortedArtists.slice(0, 20);
-      setTopArtists(first20Artists); 
+      setTopArtists(first20Artists);
     } catch (error) {
       console.error("Error fetching artists:", error);
+    } finally {
+      setLoadingTopArtists(false);
     }
   }
 
   const handleNextPage = () => {
     const nextPage = currentPage + 1;
     setCurrentPage(nextPage);
-    fetchArtists(nextPage * itemsPerPage); 
+    fetchArtists(nextPage * itemsPerPage);
   };
 
   const handlePreviousPage = () => {
@@ -112,17 +119,21 @@ const AllArtists = () => {
       <div className="electronic-artists-container">
         <div>
           <h1>Edm Artists</h1>
-          <ul className="artist-list">
-            {artists.map((artist) => (
-              <ArtistCard 
-                key={artist.id} 
-                id={artist.id} 
-                name={artist.name} 
-                followers={artist.followers.total} 
-                firstImage={artist.images[0]?.url}
-              />
-            ))}
-          </ul>
+          {loadingArtists ? (
+            <p>Loading artists...</p>
+          ) : (
+            <ul className="artist-list">
+              {artists.map((artist) => (
+                <ArtistCard
+                  key={artist.id}
+                  id={artist.id}
+                  name={artist.name}
+                  followers={artist.followers.total}
+                  firstImage={artist.images[0]?.url}
+                />
+              ))}
+            </ul>
+          )}
           <div style={{ marginTop: "20px" }} className="navigation-buttons">
             <button onClick={handlePreviousPage} disabled={currentPage === 0} style={{ marginRight: "10px" }}>
               Previous
@@ -134,22 +145,26 @@ const AllArtists = () => {
         </div>
         <div className="top-artists-container">
           <h1>Top 20 EDM Artists</h1>
-          <ul>
-            {topArtists.map((artist) => (
-              <ArtistCard 
-                key={artist.id} 
-                id={artist.id} 
-                name={artist.name} 
-                followers={artist.followers.total} 
-                firstImage={artist.images[0]?.url}
-              />
-            ))}
-          </ul>
+
+          {loadingTopArtists ? (
+            <p>Loading top artists...</p> // Placeholder para top artistas mientras cargan
+          ) : (
+            <ul>
+              {topArtists.map((artist) => (
+                <ArtistCard
+                  key={artist.id}
+                  id={artist.id}
+                  name={artist.name}
+                  followers={artist.followers.total}
+                  firstImage={artist.images[0]?.url}
+                />
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>
   );
-  
 };
 
 export default AllArtists;
