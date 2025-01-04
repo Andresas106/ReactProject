@@ -9,6 +9,7 @@ const Detail = () => {
   const [albums, SetAlbums] = useState([]);
   const [artist, SetArtist] = useState(null);
   const [tracks, SetTracks] = useState([]);
+  const [relatedArtists, SetRelatedArtists] = useState([]);
     // Función para obtener detalles del artista
     const fetchArtistDetails = async () => {
       const token = localStorage.getItem("spotifyAccessToken");
@@ -89,7 +90,6 @@ const Detail = () => {
 
       const data = await response.json();
       const tracks = data.tracks;
-      console.log(tracks);
       SetTracks(tracks); 
     } catch (error) {
       console.error("Error fetching artists:", error);
@@ -124,7 +124,12 @@ const Detail = () => {
             ))}
           </ul>
         </div>
-        
+        <div>
+          <h2>Related Artists</h2>
+          <ul>
+            
+          </ul>
+        </div>
       </div>
       
     </div>
