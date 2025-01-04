@@ -82,7 +82,7 @@ const Detail = () => {
           <h2>Artist Album</h2> 
           <ul>
             {albums.map((album) => (
-              <AlbumCard key={album.id} name={album.name} image={album.images[2].url} releaseDate={album.release_date}/>
+              <AlbumCard key={album.id} id={album.id} name={album.name} image={album.images[2].url} releaseDate={album.release_date}/>
             ))}
           </ul>
         </div>
