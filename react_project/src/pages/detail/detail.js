@@ -55,7 +55,7 @@ const Detail = () => {
       });
 
       if (!response.ok) {
-        throw new Error(`Error fetching artists: ${response.statusText}`);
+        throw new Error(`Error fetching albums artist: ${response.statusText}`);
       }
 
       const data = await response.json();
@@ -64,7 +64,7 @@ const Detail = () => {
 
 
     } catch (error) {
-      console.error("Error fetching artists:", error);
+      console.error("Error fetching albums artist:", error);
     }
   };
 
@@ -85,14 +85,14 @@ const Detail = () => {
       });
 
       if (!response.ok) {
-        throw new Error(`Error fetching artists: ${response.statusText}`);
+        throw new Error(`Error fetching top tracks artist: ${response.statusText}`);
       }
 
       const data = await response.json();
       const tracks = data.tracks;
       SetTracks(tracks); 
     } catch (error) {
-      console.error("Error fetching artists:", error);
+      console.error("Error fetching top tracks artist:", error);
     }
   };
 
@@ -122,12 +122,6 @@ const Detail = () => {
             {tracks.map((track) => (
               <TrackCard key={track.id} id={track.id} />
             ))}
-          </ul>
-        </div>
-        <div>
-          <h2>Related Artists</h2>
-          <ul>
-            
           </ul>
         </div>
       </div>

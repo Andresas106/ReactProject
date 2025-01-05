@@ -42,14 +42,14 @@ const SearchInput = () => {
       });
 
       if (!response.ok) {
-        throw new Error(`Error fetching artists: ${response.statusText}`);
+        throw new Error(`Error fetching search artists: ${response.statusText}`);
       }
 
       const data = await response.json();
       setArtists(data.artists.items);
       setMessage(""); // Clear message if there are artists
     } catch (error) {
-      console.error("Error fetching artists:", error);
+      console.error("Error fetching search artists:", error);
       setMessage("Error fetching artists.");
     } finally {
       setIsSearching(false); // Indicate that the search has finished

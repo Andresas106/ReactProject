@@ -6,7 +6,7 @@ const AlbumCard = ({ id, name, image, releaseDate }) => {
   const navigate = useNavigate();
 
   const album = () => {
-    navigate('/album/' + id);
+    navigate('/album/' + id + '/' + name);
   };
 
 

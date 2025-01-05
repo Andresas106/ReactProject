@@ -29,7 +29,7 @@ const AllArtists = () => {
       });
 
       if (!response.ok) {
-        throw new Error(`Error fetching artists: ${response.statusText}`);
+        throw new Error(`Error fetching all artists: ${response.statusText}`);
       }
 
       const data = await response.json();
@@ -37,7 +37,7 @@ const AllArtists = () => {
 
       setArtists(artists);
     } catch (error) {
-      console.error("Error fetching artists:", error);
+      console.error("Error fetching all artists:", error);
     } finally {
       setLoadingArtists(false);
     }
@@ -66,7 +66,7 @@ const AllArtists = () => {
         });
 
         if (!response.ok) {
-          throw new Error(`Error fetching artists: ${response.statusText}`);
+          throw new Error(`Error fetching top20 artists: ${response.statusText}`);
         }
 
         const data = await response.json();
@@ -88,7 +88,7 @@ const AllArtists = () => {
       const first20Artists = sortedArtists.slice(0, 20);
       setTopArtists(first20Artists);
     } catch (error) {
-      console.error("Error fetching artists:", error);
+      console.error("Error fetching top20 artists:", error);
     } finally {
       setLoadingTopArtists(false);
     }
