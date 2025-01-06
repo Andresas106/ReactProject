@@ -6,6 +6,7 @@ import ElectronicArtists from "./pages/artists/electronicArtists";
 import SearchInput from "./pages/search/searchInput";
 import Detail from "./pages/detail/detail";
 import AlbumList from "./pages/album/album";
+import UserProfile from "./pages/profile/profile";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/search" element= {<SearchInput />} />
         <Route path="/detail/:id" element = {<Detail />} />
         <Route path="/album/:id/:name" element = {<AlbumList />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </Router>
   );
