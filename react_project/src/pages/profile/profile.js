@@ -1,3 +1,4 @@
+import PlaylistCard from "../../components/list_components/playlistCard";
 import TrackCard from "../../components/list_components/trackCard";
 import Nav from "../../components/shared/nav/nav";
 import { useEffect, useState } from "react";
@@ -5,6 +6,8 @@ import { useEffect, useState } from "react";
 const UserProfile = () => {
   const [userData, SetUserData] = useState([]);
   const [userFavoritesTracks, SetUserFavoritesTracks] = useState([]);
+  const [userPlaylists, SetUserPlaylists] = useState([]);
+  const [recentlyTracks, SetRecentlyTracks] = useState([]);
 
 
 
@@ -65,9 +68,89 @@ const UserProfile = () => {
     }
   };
 
+  const fetchSavedPlaylists = async () => {
+    const token = localStorage.getItem("spotifyAccessToken");
+    if (!token) {
+      console.error("No token found. Please authenticate first.");
+      return;
+    }
+
+    try {
+      const url = 'https://api.spotify.com/v1/me/playlists';
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error fetching user playlists: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      const playlists = data.items;
+      SetUserPlaylists(playlists);
+    } catch (error) {
+      console.error("Error fetching user playlists:", error);
+    }
+  };
+
+
+
+  const fetchRecentlyPlayedTracks = async () => {
+    const token = localStorage.getItem("spotifyAccessToken");
+    if (!token) {
+      console.error("No token found. Please authenticate first.");
+      return;
+    }
+  
+    let allTracks = [];
+    let nextUrl = "https://api.spotify.com/v1/me/player/recently-played";
+    const limit = 20;
+  
+    try {
+      while (allTracks.length < limit && nextUrl) {
+        const response = await fetch(nextUrl, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        if (!response.ok) {
+          throw new Error(`Error fetching recently played tracks: ${response.statusText}`);
+        }
+  
+        const data = await response.json();
+        const newTracks = uniqueTracks(data.items, allTracks);
+        allTracks = [...allTracks, ...newTracks];
+        nextUrl = data.next;
+      }
+
+      const limitedTracks = allTracks.slice(0, limit);
+      SetRecentlyTracks(limitedTracks);
+    } catch (error) {
+      console.error("Error fetching recently played tracks:", error);
+    }
+  };
+
+  const uniqueTracks = (tracks) => {
+    const seen = new Set();
+    return tracks.filter((track) => {
+      if (seen.has(track.track.id)) {
+        return false;
+      }
+      seen.add(track.track.id);
+      return true;
+    });
+  };
+
   useEffect(() => {
     fetchUserData();
     fetchTopTracks();
+    fetchSavedPlaylists();
+    fetchRecentlyPlayedTracks();
   }, []);
 
 
@@ -90,7 +173,22 @@ const UserProfile = () => {
             ))}
         </ul>
       </div>
-      
+      <div>
+        <h1>{userData.display_name} Saved Playlists</h1>
+        <ul>
+        {userPlaylists.map((playlist) => (
+              <PlaylistCard key={playlist.id} id={playlist.id} />
+            ))}
+        </ul>
+      </div>
+      <div>
+        <h1>Recently {userData.display_name} Played Tracks</h1>
+        <ul>
+        {recentlyTracks.map((track) => (
+              <TrackCard key={track.track.id} id={track.track.id} />
+            ))}
+        </ul>
+      </div>
     </div>
   );
 };

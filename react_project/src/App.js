@@ -8,6 +8,7 @@ import Detail from "./pages/detail/detail";
 import AlbumList from "./pages/album/album";
 import UserProfile from "./pages/profile/profile";
 
+
 function App() {
   return (
     <Router>

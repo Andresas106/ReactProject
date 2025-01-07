@@ -8,7 +8,8 @@ const SCOPES = [
   "user-read-private",
   "user-read-email",
   "playlist-read-private",
-  "user-top-read"
+  "user-top-read",
+  "user-read-recently-played"
 ];
 
 const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(
