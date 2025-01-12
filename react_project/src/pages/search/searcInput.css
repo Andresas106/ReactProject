@@ -1,55 +1,99 @@
+/* searchInput.css */
+
+/* The container that holds everything, takes full height and ensures centering */
 .search-container {
-  padding: 20px;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;  /* Centra el contenido horizontalmente */
-  justify-content: center;  /* Centra el contenido verticalmente */
-  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  padding: 20px;               /* Padding inside the container */
+  background-color: #ffffff;   /* White background */
+  display: flex;               /* Enables flexbox layout */
+  flex-direction: column;      /* Items stack vertically */
+  justify-content: center;     /* Centers items horizontally */
+  align-items: center;         /* Centers items vertically */
+  height: 100vh;               /* Takes full viewport height */
+  font-family: 'Arial', sans-serif; /* Font style */
+  color: #333;                 /* Text color */
+  transition: all 0.3s ease-in-out; /* Smooth transitions */
+  max-width: 800px;            /* Maximum width */
+  margin: 0 auto;              /* Centers horizontally */
+  width: 100%;                 /* Full width */
 }
 
+/* Title of the search */
+.search-title {
+  font-size: 2rem;             /* Font size */
+  margin-bottom: 20px;         /* Spacing below the title */
+  text-align: center;          /* Center the text */
+}
+
+/* Wrapper for the search input */
 .search-header {
-  display: flex;
-  justify-content: center; /* Centra el contenedor de la barra */
-  width: 100%;
-  max-width: 500px; /* Controla el tamaño máximo de la barra de búsqueda */
-  margin-bottom: 20px;
-  flex-grow: 1; /* Permite que el contenedor crezca si es necesario */
+  display: flex;               /* Flexbox for layout */
+  flex-direction: column;      /* Stack items vertically */
+  justify-content: center;     /* Center items horizontally */
+  align-items: center;         /* Center items vertically */
+  width: 100%;                 /* Full width */
 }
 
+/* Style for the search input field */
 .search-header input {
-  width: 100%; /* Hace que el input ocupe todo el ancho disponible en su contenedor */
-  padding: 12px;
-  border: 2px solid #ddd; /* Borde gris claro */
-  border-radius: 25px; /* Bordes redondeados */
-  font-size: 1rem;
-  background-color: #fff;
-  color: #333;
+  width: 60%;                   /* Input field width */
+  padding: 12px 20px;           /* Padding inside the input field */
+  border: 2px solid #ddd;       /* Border color and width */
+  border-radius: 25px;          /* Rounded corners */
+  font-size: 1rem;              /* Font size */
+  background-color: #f9f9f9;    /* Light gray background */
+  color: #333;                  /* Text color */
+  outline: none;                /* Remove default border */
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow around input */
+  text-align: center;           /* Centered text */
 }
 
+/* Focus state of the input field */
 .search-header input:focus {
-  outline: none;
-  border-color: #1db954; /* Verde cuando se hace foco */
+  border-color: #1db954;       /* Border color when focused */
+  box-shadow: 0 0 12px rgba(29, 185, 84, 0.5); /* Shadow when focused */
 }
 
+/* Placeholder text inside the input */
 .search-header input::placeholder {
-  color: #bbb; /* Color gris para el texto del placeholder */
+  color: #bbb;                  /* Placeholder color */
+  opacity: 1;                   /* Fully visible placeholder */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition */
 }
 
-ul {
-  list-style-type: none; /* Elimina los puntos */
-  padding: 0;
-  margin: 0;
+/* Placeholder text opacity when input is focused */
+.search-header input:focus::placeholder {
+  opacity: 0.5;                 /* Make placeholder slightly transparent when focused */
 }
 
+/* Indicator that shows while searching */
+.searching-indicator {
+  text-align: center;           /* Center the text */
+  color: #666;                  /* Text color */
+  font-size: 1.2rem;            /* Font size */
+  margin-top: 10px;              /* Margin above the text */
+}
+
+/* Message to show when no results are found */
 .message {
-  text-align: center;
-  color: red; /* Gris suave */
-  font-size: 1.5rem;
-  margin-top: 20px;
+  text-align: center;           /* Center the text */
+  color: red;                   /* Red text color */
+  font-size: 1.5rem;            /* Font size */
+  margin-top: 20px;             /* Margin above the message */
 }
 
-.message.no-results {
-  color: red;
-  font-size: 1.5rem;
+/* Style for the list of search results */
+.search-results {
+  padding: 0;                    /* Remove padding */
+  margin-top: 20px;              /* Margin above the results */
+}
+
+/* Style for each list item (search result) */
+.search-results li {
+  margin-bottom: 15px;          /* Margin below each item */
+}
+
+/* Style for the lists */
+ul{
+  list-style: none;             /* Remove default list style */
 }

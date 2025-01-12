@@ -1,0 +1,105 @@
+/* UserProfile.css */
+
+/* This container holds the entire profile with padding, background color, and shadow */
+.profile-container {
+    padding: 20px;                /* Adds padding inside the container */
+    background-color: #121212;    /* Dark background color */
+    color: white;                 /* Text color */
+    border-radius: 10px;          /* Rounded corners */
+    max-width: 900px;             /* Maximum width of the profile */
+    margin: 20px auto;            /* Center the profile horizontally */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);  /* Shadow around the container */
+}
+
+/* Header section in the profile, aligned to the center */
+.profile-header {
+    text-align: center;           /* Center the text */
+    margin-bottom: 20px;          /* Space below the header */
+}
+
+/* Style for the profile image with rounded shape and border */
+.profile-header img {
+    width: 100px;                  /* Width of the profile picture */
+    height: 100px;                 /* Height of the profile picture */
+    border-radius: 50%;           /* Make it circular */
+    border: 2px solid #1db954;    /* Green border */
+    object-fit: cover;             /* Cover the space without distortion */
+}
+
+/* Header title with specific color and size */
+.profile-header h1 {
+    font-size: 1.8rem;             /* Font size for name */
+    margin: 10px 0;                /* Top and bottom margin */
+    color: #1db954;                /* Green color */
+}
+
+/* Header paragraph style with smaller text and gray color */
+.profile-header p {
+    font-size: 1rem;               /* Font size for description */
+    margin: 5px 0;                 /* Top and bottom margin */
+    color: #cccccc;                /* Gray color */
+}
+
+/* Section block with spacing between sections */
+.section {
+    margin-bottom: 30px;          /* Space below each section */
+}
+
+/* Section title with color, uppercase, and centered */
+.section h1 {
+    font-size: 1.5rem;             /* Font size for section title */
+    margin-bottom: 15px;          /* Space below the section title */
+    text-align: center;           /* Center the title */
+    color: #1db954;                /* Green color */
+    text-transform: uppercase;    /* Uppercase letters */
+}
+
+/* List inside the section, using grid layout */
+.section ul {
+    display: grid;                 /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  /* Auto-fit grid columns */
+    gap: 15px;                     /* Space between grid items */
+    list-style: none;              /* No bullets */
+    padding: 0;                     /* No padding */
+}
+
+/* Each list item in the grid with background and hover effects */
+.section ul li {
+    background: #282828;           /* Dark background */
+    border-radius: 10px;           /* Rounded corners */
+    text-align: center;            /* Center text inside */
+    padding: 15px;                 /* Padding inside */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth hover effects */
+}
+
+/* Hover effect for list items */
+.section ul li:hover {
+    transform: scale(1.05);        /* Slightly enlarge on hover */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);  /* Shadow on hover */
+}
+
+/* Paragraph inside each list item */
+.section ul li p {
+    font-size: 0.9rem;             /* Font size for list item text */
+    margin: 10px 0;                /* Space above and below text */
+    color: #cccccc;                /* Gray color */
+}
+
+/* This part of the header shows the user's country flag and text */
+.profile-header p {
+    font-size: 1rem;               /* Font size for the country information */
+    margin: 5px 0;                 /* Top and bottom margin */
+    color: #cccccc;                /* Gray color */
+    display: flex;                 /* Enable flexbox */
+    align-items: center;           /* Center vertically */
+    justify-content: center;       /* Center horizontally */
+    gap: 10px;                      /* Space between flag and text */
+}
+
+/* The profile header uses flexbox for layout */
+.profile-header {
+    display: flex;                 /* Enable flexbox */
+    align-items: center;           /* Center vertically */
+    justify-content: center;       /* Center horizontally */
+    flex-direction: column;        /* Stack elements vertically */
+}

@@ -3,6 +3,7 @@ import Nav from "../../components/shared/nav/nav";
 import { useEffect, useState } from "react";
 import AlbumCard from "../../components/list_components/albumCard";
 import TrackCard from "../../components/list_components/trackCard";
+import "../detail/detail.css";
 
 const Detail = () => {
   const id = useParams();

@@ -1,0 +1,138 @@
+/* Fondo general y configuración del cuerpo */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212; /* Fondo oscuro */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Cabecera del artista */
+.artist-header {
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.artist-header img {
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.artist-header img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9);
+}
+
+.artist-header h1 {
+    font-size: 2.8rem;
+    color: #1db954;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.artist-header p {
+    font-size: 1.1rem;
+    color: #b3b3b3;
+}
+
+/* Secciones */
+.section {
+    margin-bottom: 50px;
+    width: 100%;
+    padding: 20px 0;
+    background-color: #181818; /* Fondo alternado */
+    border-radius: 10px;
+}
+
+.section:nth-child(even) {
+    background-color: #1e1e1e; /* Fondo más claro */
+}
+
+.section h2 {
+    font-size: 2rem;
+    color: #fff;
+    border-bottom: 3px solid #1db954;
+    padding-bottom: 10px;
+    display: inline-block;
+    text-transform: uppercase;
+    margin: 0 auto 30px auto;
+}
+
+/* Lista de tarjetas */
+.section ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Tarjetas */
+.card {
+    background-color: #282828;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    max-width: 220px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
+}
+
+.card img {
+    width: 100%;
+    border-bottom: 3px solid #1db954;
+    object-fit: cover;
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    margin: 15px 0;
+    padding: 0 15px;
+    color: #fff;
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #b3b3b3;
+    margin-bottom: 15px;
+}
+
+/* Mejoras responsive */
+@media (max-width: 768px) {
+    .section ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+}
