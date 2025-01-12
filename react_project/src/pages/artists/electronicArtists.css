@@ -10,11 +10,10 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Cuatro columnas en lugar de tres */
   gap: 20px; /* Espaciado entre las cartas */
-  padding: 20px;
+  padding: 100px;
   list-style: none;
   width: 70%;
 }
-
 
 /* Estilo para el contenedor de los 20 mejores artistas */
 .top-artists-container {
