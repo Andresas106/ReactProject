@@ -2,7 +2,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Nav from "../../components/shared/nav/nav";
 import { useEffect, useState } from "react";
 import TrackCard from "../../components/list_components/trackCard";
-
 const AlbumList = () => {
   const {id, name} = useParams();
   const [tracks, SetTracks] = useState([]);

@@ -1,124 +1,131 @@
-/* Diseño general */
+/* General Design */
 .electronic-artists-container {
-  display: flex;
-  justify-content: center; /* Centra los dos contenedores horizontalmente */
-  background-color: #1e1e1e; /* Fondo oscuro, ideal para la temática EDM */
-  width: 100%; /* Ocupa todo el ancho */
-  margin: 0 auto; /* Centrado horizontal */
-  padding: 20px; /* Espaciado alrededor del contenedor principal */
+  display: flex; 
+  justify-content: center; /* Horizontally centers the two containers */
+  background-color: #1e1e1e; /* Dark background, ideal for EDM theme */
+  width: 100%; /* Uses full width of the page */
+  padding: 20px; /* Padding around the main container */
+  box-sizing: border-box; /* Prevents padding/margin from expanding the box */
 }
 
-/* Artistas principales (ocupa 80%) */
+/* Main Artists (occupies 80%) */
 .artist-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Cuatro columnas en la cuadrícula */
-  gap: 20px; /* Espaciado entre las cartas */
-  width: 80%; /* Ocupa el 80% del contenedor principal */
-  margin-right: auto;
-  margin-left: auto;
+  display: grid; /* Layout as grid */
+  grid-template-columns: repeat(4, 1fr); /* Four columns in the grid */
+  gap: 2vw; /* Spacing between the cards, using viewport width */
+  width: 75vw; /* 75% of the viewport width */
+  margin: 0 auto; /* Centers the grid horizontally */
 }
 
-/* Contenedor de los 20 mejores artistas (ocupa 20%) */
+/* Top 20 Artists Container (occupies 20%) */
 .top-artists-container {
-  width: 20%; /* Proporcional al contenedor principal */
-  background-color: #333; /* Fondo oscuro para el top 20 */
+  width: 15vw; /* Proportion of the main container, 20% of viewport width */
+  background-color: #333; /* Dark background for top 20 section */
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  overflow-y: auto;
-  padding: 20px;
+  margin-left: 10px; /* Small margin from the main container */
 }
 
-/* Asegurar que la lista no tenga puntos */
+/* Ensures no list points */
 .top-artists-container ul {
-  list-style: none; /* Eliminar puntos de la lista */
-  padding: 0; /* Eliminar cualquier relleno predeterminado */
-  margin: 0; /* Eliminar márgenes */
+  list-style: none; /* Removes list points */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes margins */
 }
 
-/* Estilo de los elementos de la lista */
+/* List items style */
 .top-artists-container li {
-  font-size: 0.9rem; /* Tamaño de fuente más pequeño */
-  color: #fff; /* Color blanco */
-  padding: 8px 0; /* Espaciado entre elementos */
-  border-bottom: 1px solid #444; /* Línea divisoria sutil */
+  font-size: 0.9rem; /* Font size in relation to 1rem, slightly smaller */
+  color: #fff; /* White text */
+  padding: 8px 0; /* Vertical padding in pixels */
+  border-bottom: 1px solid #444; /* Subtle border in pixels */
 }
 
 .top-artists-container li:last-child {
-  border-bottom: none; /* Eliminar borde en el último elemento */
+  border-bottom: none; /* No border on the last list item */
 }
 
-/* Estilo de las cartas de los artistas */
+/* Artists cards style */
 .artist-card {
-  border: 1px solid #444; /* Borde oscuro */
-  border-radius: 10px; /* Esquinas redondeadas */
-  padding: 15px;
-  background-color: #2c2c2c; /* Fondo oscuro */
-  color: #fff; /* Texto blanco */
-  text-align: center; /* Centra el contenido de la tarjeta */
+  border: 1px solid #444; /* 1 pixel border */
+  border-radius: 10px; /* Rounded corners in pixels */
+  background-color: #2c2c2c; /* Dark background */
+  color: #fff; /* White text */
+  text-align: center; /* Center content */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box; /* Prevents padding/margin from affecting dimensions */
 }
 
-/* Animación al pasar el ratón por la carta */
+/* Hover animation on artist card */
 .artist-card:hover {
-  transform: translateY(-5px); /* Animación al pasar el ratón */
-  box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3); /* Efecto de brillo verde */
+  transform: translateY(-5px); /* Hover translation in pixels */
+  box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3); /* Green glow effect */
 }
 
-/* Título dentro de la tarjeta */
+/* Title inside the card */
 .artist-card-title {
-  font-size: 1.1rem;
-  color: #fff; /* Texto blanco */
-  margin-bottom: 8px;
+  font-size: 1.1rem; /* Slightly larger than 1rem */
+  color: #fff; /* White text */
+  margin-bottom: 8px; /* Margin spacing in pixels */
 }
 
-/* Seguidores en la tarjeta */
+/* Followers in the card */
 .artist-card-followers {
-  font-size: 0.9rem;
-  color: #aaa; /* Gris claro */
-  margin-bottom: 12px;
+  font-size: 0.9rem; /* Font size smaller than 1rem */
+  color: #aaa; /* Light grey */
+  margin-bottom: 12px; /* Margin spacing in pixels */
 }
 
-/* Botones de navegación */
+/* Navigation buttons */
 .navigation-buttons {
   display: flex;
-  justify-content: center; /* Centra los botones */
+  justify-content: center; /* Centers the buttons */
   align-items: center;
-  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
-  margin-top: 20px;
-  padding: 10px 0; /* Relleno arriba y abajo */
+  width: 100%; /* Full width of the container */
+  margin-top: 20px; /* Top spacing in pixels */
+  padding: 10px 0; /* Top and bottom padding */
 }
 
-/* Estilo de los botones individuales */
+/* Style for individual buttons */
 .navigation-buttons button {
-  background-color: #1db954; /* Verde brillante */
+  background-color: #1db954; /* Bright green */
   color: white;
   border: none;
-  border-radius: 25px; /* Botones redondeados */
-  padding: 12px 25px; /* Botones cómodos para hacer clic */
-  font-size: 1.1rem; /* Tamaño de fuente */
+  border-radius: 25px; /* Rounded buttons in pixels */
+  padding: 12px 25px; /* Padding in pixels */
+  font-size: 1.1rem; /* Font size slightly larger than 1rem */
   cursor: pointer;
-  margin: 0 15px; /* Espaciado entre botones */
+  margin: 0 15px; /* Space between buttons in pixels */
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
-/* Hover en botones */
+/* Hover on buttons */
 .navigation-buttons button:hover {
-  background-color: #14833b; /* Verde más oscuro */
-  transform: translateY(-3px); /* Elevación */
+  background-color: #14833b; /* Darker green */
+  transform: translateY(-3px); /* Elevation effect in pixels */
 }
 
-/* Botón deshabilitado */
+/* Disabled button */
 .navigation-buttons button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
   box-shadow: none;
 }
 
-/* Títulos generales */
+/* General titles */
 h1 {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #fff; /* Títulos en blanco */
+  font-size: 2rem; /* Font size larger */
+  margin-bottom: 20px; /* Margin spacing in pixels */
+  color: #fff; /* White text */
 }
+/*
+
+--- Usefull Explication ---
+%: Used to set proportional sizes relative to other elements or the viewport. For example, width: 75vw; takes up 75% of the viewport width.
+
+vw: Viewport unit, which is 1% of the viewport width. Used in 2vw to give dynamic spacing between elements based on the viewport size.
+
+rem: Root-relative unit, which is based on the html font-size (usually 16px). font-size: 1.1rem; makes text 1.1 times larger than the base font-size defined in html.
+
+px: Pixel unit, fixed and precise. For example, border: 1px solid #444; sets a fixed 1-pixel border.*/
