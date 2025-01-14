@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  min-width: 100vh;
   background: linear-gradient(135deg, #1db954, #191414);
   color: white;
   text-align: center;
