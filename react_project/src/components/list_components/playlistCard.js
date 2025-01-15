@@ -6,7 +6,7 @@ const PlaylistCard = ({ id }) => {
             <iframe
             src={`https://open.spotify.com/embed/playlist/${id}`}
             width="300"
-            height="380"
+            height="80"
             allow="encrypted-media"
         ></iframe>
         </li> 
