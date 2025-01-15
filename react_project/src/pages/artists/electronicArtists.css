@@ -16,7 +16,6 @@
   width: 75vw; /* 75% of the viewport width */
   margin: 0 auto; /* Centers the grid horizontally */
 }
-
 /* Top 20 Artists Container (occupies 20%) */
 .top-artists-container {
   width: 15vw; /* Proportion of the main container, 20% of viewport width */
@@ -25,11 +24,14 @@
   margin-left: 10px; /* Small margin from the main container */
 }
 
-/* Ensures no list points */
+/* Removes default list points */
 .top-artists-container ul {
   list-style: none; /* Removes list points */
   padding: 0; /* Removes default padding */
   margin: 0; /* Removes margins */
+  display: flex; /* Enables flexbox for layout */
+  flex-direction: column; /* Ensures vertical stacking */
+  gap: 15px; /* Adds space between list items */
 }
 
 /* List items style */
@@ -119,6 +121,7 @@ h1 {
   margin-bottom: 20px; /* Margin spacing in pixels */
   color: #fff; /* White text */
 }
+
 /*
 
 --- Usefull Explication ---
@@ -128,4 +131,6 @@ vw: Viewport unit, which is 1% of the viewport width. Used in 2vw to give dynami
 
 rem: Root-relative unit, which is based on the html font-size (usually 16px). font-size: 1.1rem; makes text 1.1 times larger than the base font-size defined in html.
 
-px: Pixel unit, fixed and precise. For example, border: 1px solid #444; sets a fixed 1-pixel border.*/
+px: Pixel unit, fixed and precise. For example, border: 1px solid #444; sets a fixed 1-pixel border.
+
+*/

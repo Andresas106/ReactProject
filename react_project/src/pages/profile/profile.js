@@ -4,6 +4,7 @@ import Nav from "../../components/shared/nav/nav";                      // Impor
 import Flag from "react-world-flags";                                   // Import the react-world-flags library for country flags
 import { useEffect, useState } from "react";                            // Import React hooks: useEffect and useState
 import "../profile/UserProfile.css";                                   // Import CSS for the profile page
+import Footer from "../footer/footer.js"; // footer
 
 const UserProfile = () => {
   // State to store user data, favorite tracks, playlists, and recently played tracks
@@ -176,6 +177,7 @@ const UserProfile = () => {
           ))}
         </ul>
       </div>
+      <Footer />
     </div>
   );
 };

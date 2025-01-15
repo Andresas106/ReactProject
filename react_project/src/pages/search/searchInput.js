@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";  // Import useLocation hook from
 import ArtistCard from "../../components/list_components/artistCard";  // Importing ArtistCard component
 import Nav from "../../components/shared/nav/nav";  // Importing the navigation bar component
 import "../search/searcInput.css";  // Importing the CSS file for styling
+import Footer from "../footer/footer.js"; // footer
 
 /* Functional component for handling search input */
 const SearchInput = () => {
@@ -99,7 +100,9 @@ const SearchInput = () => {
           />
         ))}
       </ul>
+      <Footer />
     </div>
+    
   );
 };
 

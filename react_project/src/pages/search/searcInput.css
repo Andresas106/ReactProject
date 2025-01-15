@@ -2,19 +2,14 @@
 
 /* The container that holds everything, takes full height and ensures centering */
 .search-container {
-  padding: 20px;               /* Padding inside the container */
-  background-color: #ffffff;   /* White background */
-  display: flex;               /* Enables flexbox layout */
-  flex-direction: column;      /* Items stack vertically */
-  justify-content: center;     /* Centers items horizontally */
-  align-items: center;         /* Centers items vertically */
-  height: 100vh;               /* Takes full viewport height */
-  font-family: 'Arial', sans-serif; /* Font style */
-  color: #333;                 /* Text color */
-  transition: all 0.3s ease-in-out; /* Smooth transitions */
-  max-width: 800px;            /* Maximum width */
-  margin: 0 auto;              /* Centers horizontally */
-  width: 100%;                 /* Full width */
+  padding: 20px;                /* Internal spacing */
+  background-color: #121212;    /* Dark background color */
+  color: white;                 /* White text color */
+  border-radius: 10px;          /* Rounded corners */
+  max-width: 1200px;            /* Increased maximum width */
+  margin: 20px auto;            /* Centered horizontally */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Shadow around the container */
+  
 }
 
 /* Title of the search */
@@ -84,13 +79,22 @@
 
 /* Style for the list of search results */
 .search-results {
-  padding: 0;                    /* Remove padding */
-  margin-top: 20px;              /* Margin above the results */
+  padding: 0;                      /* Remove padding */
+  margin-top: 20px;                /* Margin above the results */
+  display: grid;                   /* Enable grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
 }
 
 /* Style for each list item (search result) */
 .search-results li {
-  margin-bottom: 15px;          /* Margin below each item */
+  margin-bottom: 15px;            /* Margin below each item */
+  margin-top: 15px;               /* Adds margin above each list item */
+  background-color: #1e1e1e;      /* Slight background color to differentiate items */
+  border-radius: 8px;             /* Rounded corners for the cards */
+  padding: 15px;                   /* Padding inside each card */
+  display: flex;                   /* Flexbox layout */
+  align-items: center;             /* Center items vertically */
+  transition: box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
 }
 
 /* Style for the lists */

@@ -86,7 +86,7 @@ const AllArtists = () => {
 
       const sortedArtists = allArtists.sort((a, b) => b.popularity - a.popularity);
 
-      const first20Artists = sortedArtists.slice(0, 20);
+      const first20Artists = sortedArtists.slice(0, 5);
       setTopArtists(first20Artists);
     } catch (error) {
       console.error("Error fetching top20 artists:", error);
@@ -145,7 +145,7 @@ const AllArtists = () => {
           </div>
         </div>
         <div className="top-artists-container">
-          <h1>Top 20 EDM Artists</h1>
+          <h1>Top 5 EDM Artists</h1>
 
           {loadingTopArtists ? (
             <p>Loading top artists...</p> // Placeholder para top artistas mientras cargan
