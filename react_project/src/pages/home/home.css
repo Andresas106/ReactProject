@@ -31,3 +31,9 @@
 .home-button:hover {
   background-color: #14833b;
 }
+
+.spotify-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+}

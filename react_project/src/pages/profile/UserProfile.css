@@ -1,105 +1,111 @@
 /* UserProfile.css */
 
-/* This container holds the entire profile with padding, background color, and shadow */
+/* Main container: increased width to accommodate additional content */
 .profile-container {
-    padding: 20px;                /* Adds padding inside the container */
+    padding: 20px;                /* Internal spacing */
     background-color: #121212;    /* Dark background color */
-    color: white;                 /* Text color */
+    color: white;                 /* White text color */
     border-radius: 10px;          /* Rounded corners */
-    max-width: 900px;             /* Maximum width of the profile */
-    margin: 20px auto;            /* Center the profile horizontally */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);  /* Shadow around the container */
+    max-width: 1200px;            /* Increased maximum width */
+    margin: 20px auto;            /* Centered horizontally */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Shadow around the container */
 }
 
-/* Header section in the profile, aligned to the center */
+/* Header section for the profile, aligned to the center */
 .profile-header {
-    text-align: center;           /* Center the text */
+    text-align: center;           /* Center-align text */
     margin-bottom: 20px;          /* Space below the header */
 }
 
-/* Style for the profile image with rounded shape and border */
+/* Profile image styling: rounded shape with border */
 .profile-header img {
-    width: 100px;                  /* Width of the profile picture */
-    height: 100px;                 /* Height of the profile picture */
-    border-radius: 50%;           /* Make it circular */
+    width: 100px;                  /* Fixed width for the profile picture */
+    height: 100px;                 /* Fixed height for the profile picture */
+    border-radius: 50%;           /* Circular shape */
     border: 2px solid #1db954;    /* Green border */
-    object-fit: cover;             /* Cover the space without distortion */
+    object-fit: cover;             /* Maintain aspect ratio without distortion */
 }
 
-/* Header title with specific color and size */
+/* Header title: specific color and size */
 .profile-header h1 {
-    font-size: 1.8rem;             /* Font size for name */
-    margin: 10px 0;                /* Top and bottom margin */
-    color: #1db954;                /* Green color */
+    font-size: 1.8rem;             /* Font size for the title */
+    margin: 10px 0;                /* Space above and below */
+    color: #1db954;                /* Green color for the title */
 }
 
-/* Header paragraph style with smaller text and gray color */
+/* Header paragraph: smaller text with gray color */
 .profile-header p {
-    font-size: 1rem;               /* Font size for description */
-    margin: 5px 0;                 /* Top and bottom margin */
-    color: #cccccc;                /* Gray color */
+    font-size: 1rem;               /* Smaller font size for description */
+    margin: 5px 0;                 /* Spacing above and below */
+    color: #cccccc;                /* Light gray color */
 }
 
-/* Section block with spacing between sections */
+/* Section block: spacing between each section */
 .section {
-    margin-bottom: 30px;          /* Space below each section */
+    margin-bottom: 30px;          /* Bottom spacing for separation */
 }
 
-/* Section title with color, uppercase, and centered */
+/* Section titles: styled with color, uppercase, and centered */
 .section h1 {
-    font-size: 1.5rem;             /* Font size for section title */
-    margin-bottom: 15px;          /* Space below the section title */
-    text-align: center;           /* Center the title */
-    color: #1db954;                /* Green color */
-    text-transform: uppercase;    /* Uppercase letters */
+    font-size: 1.5rem;             /* Font size for section titles */
+    margin-bottom: 15px;          /* Spacing below the title */
+    text-align: center;           /* Centered text */
+    color: #1db954;                /* Green color for titles */
+    text-transform: uppercase;    /* Uppercase text transformation */
 }
 
-/* List inside the section, using grid layout */
+/* Tracks section: grid layout for organizing items in columns */
 .section ul {
-    display: grid;                 /* Grid layout */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));  /* Auto-fit grid columns */
-    gap: 15px;                     /* Space between grid items */
-    list-style: none;              /* No bullets */
-    padding: 0;                     /* No padding */
+    display: grid;                 /* Grid-based layout */
+    grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
+    gap: 15px;                     /* Spacing between grid items */
+    list-style: none;              /* Remove bullet points */
+    padding: 0;                    /* No padding */
+    margin: 0 auto;                /* Center the grid */
 }
 
-/* Each list item in the grid with background and hover effects */
+/* Individual items (li) in the grid */
 .section ul li {
-    background: #282828;           /* Dark background */
-    border-radius: 10px;           /* Rounded corners */
-    text-align: center;            /* Center text inside */
-    padding: 15px;                 /* Padding inside */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth hover effects */
+    width: 300px;                  /* Fixed width for each track */
+    height: 80px;                  /* Fixed height for each track */
+    background: #282828;           /* Dark background for items */
+    border-radius: 8px;            /* Rounded corners */
+    text-align: center;            /* Center text */
+    padding: 10px;                 /* Internal padding */
+    display: flex;                 /* Use flexbox for inner content alignment */
+    align-items: center;           /* Center content vertically */
+    justify-content: center;       /* Center content horizontally */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
 }
 
-/* Hover effect for list items */
+/* Hover effect for grid items */
 .section ul li:hover {
-    transform: scale(1.05);        /* Slightly enlarge on hover */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);  /* Shadow on hover */
+    transform: scale(1.05);        /* Slightly enlarge the item on hover */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Add shadow effect */
 }
 
-/* Paragraph inside each list item */
+/* Paragraph inside each grid item */
 .section ul li p {
-    font-size: 0.9rem;             /* Font size for list item text */
-    margin: 10px 0;                /* Space above and below text */
-    color: #cccccc;                /* Gray color */
+    font-size: 0.9rem;             /* Font size for grid item text */
+    margin: 10px 0;                /* Space above and below the text */
+    color: #cccccc;                /* Light gray text color */
 }
 
-/* This part of the header shows the user's country flag and text */
+/* Additional styling for header: country flag and text displayed together */
 .profile-header p {
-    font-size: 1rem;               /* Font size for the country information */
-    margin: 5px 0;                 /* Top and bottom margin */
-    color: #cccccc;                /* Gray color */
-    display: flex;                 /* Enable flexbox */
-    align-items: center;           /* Center vertically */
-    justify-content: center;       /* Center horizontally */
-    gap: 10px;                      /* Space between flag and text */
+    font-size: 1rem;               /* Font size for country info */
+    margin: 5px 0;                 /* Spacing above and below */
+    color: #cccccc;                /* Gray text color */
+    display: flex;                 /* Enable flexbox layout */
+    align-items: center;           /* Align content vertically */
+    justify-content: center;       /* Center content horizontally */
+    gap: 10px;                     /* Space between flag and text */
 }
 
-/* The profile header uses flexbox for layout */
+/* Flexbox layout for the profile header */
 .profile-header {
-    display: flex;                 /* Enable flexbox */
-    align-items: center;           /* Center vertically */
-    justify-content: center;       /* Center horizontally */
+    display: flex;                 /* Use flexbox for alignment */
+    align-items: center;           /* Center elements vertically */
+    justify-content: center;       /* Center elements horizontally */
     flex-direction: column;        /* Stack elements vertically */
 }

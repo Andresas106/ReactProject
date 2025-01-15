@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ArtistCard from "../../components/list_components/artistCard";
 import Nav from "../../components/shared/nav/nav";
 import "./electronicArtists.css";
+import Footer from "../footer/footer.js"; // Importamos el footer
 
 const AllArtists = () => {
   const [artists, setArtists] = useState([]);
@@ -163,6 +164,7 @@ const AllArtists = () => {
           )}
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

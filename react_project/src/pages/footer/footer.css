@@ -1,0 +1,20 @@
+/* footer.css */
+
+.footer-container {
+    background-color: #121212; /* Dark background for the footer */
+    color: #ffffff;           /* White text color */
+    text-align: center;       /* Center-align text */
+    padding: 15px 10px;       /* Internal spacing for the footer */
+    font-size: 0.9rem;        /* Font size for the footer text */
+    border-top: 1px solid #1db954; /* Green top border for separation */
+  }
+  
+  .footer-container a {
+    color: #1db954;           /* Link color matching Spotify's green */
+    text-decoration: none;    /* No underline for links */
+  }
+  
+  .footer-container a:hover {
+    text-decoration: underline; /* Underline links on hover */
+  }
+  

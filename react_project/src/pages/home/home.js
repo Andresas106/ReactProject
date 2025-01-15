@@ -1,7 +1,6 @@
 import React from "react";
 import './home.css';
 
-
 const CLIENT_ID = "094739ed119940bb8c913a9d086c4b34";
 const REDIRECT_URI = "http://localhost:3000/callback";
 const SCOPES = [
@@ -19,16 +18,21 @@ const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&
 const Home = () => {
   const redirectToSpotify = () => {
     window.location.href = AUTH_URL;
-    
   };
 
   return (
     <div className="home-container">
-      <h1>Bienvenido</h1>
-    <button className="home-button" onClick={redirectToSpotify}>
-    Iniciar sesión con Spotify
-    </button>
-</div>
+      {/* Agregamos la imagen del logo aquí */}
+      <img
+        src="https://img.icons8.com/?size=100&id=6707&format=png&color=FFFFFF"
+        alt="Spotify Logo"
+        className="spotify-logo"
+      />
+      <h1>Welcome</h1>
+      <button className="home-button" onClick={redirectToSpotify}>
+        Sign in with Spotify
+      </button>
+    </div>
   );
 };
 
