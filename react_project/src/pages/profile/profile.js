@@ -133,16 +133,17 @@ const UserProfile = () => {
       console.error("Error fetching recently played tracks:", error);
     }
   };
-  const uniqueTracks = (tracks) => {
-    const seen = new Set();
-    return tracks.filter((track) => {
-      if (seen.has(track.track.id)) {
-        return false;
-      }
-      seen.add(track.track.id);
-      return true;
-    });
-  };
+
+const uniqueTracks = (newTracks, existingTracks) => {
+  const seenIds = new Set(existingTracks.map((track) => track.track.id)); // Collect existing IDs
+  return newTracks.filter((track) => {
+    if (seenIds.has(track.track.id)) {
+      return false;
+    }
+    seenIds.add(track.track.id);
+    return true;
+  });
+};
 
   // Fetch user data, top tracks, saved playlists, and recently played tracks when the component mounts
   useEffect(() => {
