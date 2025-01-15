@@ -99,30 +99,49 @@ const UserProfile = () => {
 
   // Function to fetch the user's recently played tracks from Spotify API
   const fetchRecentlyPlayedTracks = async () => {
-    const token = localStorage.getItem("spotifyAccessToken");         // Retrieve Spotify access token from local storage
+    const token = localStorage.getItem("spotifyAccessToken");
     if (!token) {
-      console.error("No token found. Please authenticate first.");    // Error message if token is missing
+      console.error("No token found. Please authenticate first.");
       return;
     }
-
+  
+    let allTracks = [];
+    let nextUrl = "https://api.spotify.com/v1/me/player/recently-played";
+    const limit = 20;
+  
     try {
-      const url = "https://api.spotify.com/v1/me/player/recently-played?limit=20";  // API endpoint to get recently played tracks
-      const response = await fetch(url, {                              // Fetch the recently played tracks
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,                            // Authorization header with access token
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error fetching recently played tracks: ${response.statusText}`);  // Throw an error if fetching fails
+      while (allTracks.length < limit && nextUrl) {
+        const response = await fetch(nextUrl, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        if (!response.ok) {
+          throw new Error(`Error fetching recently played tracks: ${response.statusText}`);
+        }
+  
+        const data = await response.json();
+        const newTracks = uniqueTracks(data.items, allTracks);
+        allTracks = [...allTracks, ...newTracks];
+        nextUrl = data.next;
       }
-
-      const data = await response.json();                             // Parse the response to JSON
-      SetRecentlyTracks(data.items);                                   // Set the recently played tracks in state
+      const limitedTracks = allTracks.slice(0, limit);
+      SetRecentlyTracks(limitedTracks);
     } catch (error) {
-      console.error("Error fetching recently played tracks:", error);  // Log error message
+      console.error("Error fetching recently played tracks:", error);
     }
+  };
+  const uniqueTracks = (tracks) => {
+    const seen = new Set();
+    return tracks.filter((track) => {
+      if (seen.has(track.track.id)) {
+        return false;
+      }
+      seen.add(track.track.id);
+      return true;
+    });
   };
 
   // Fetch user data, top tracks, saved playlists, and recently played tracks when the component mounts
